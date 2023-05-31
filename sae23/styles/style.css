@@ -1,0 +1,296 @@
+
+body 
+{
+  margin: 0;
+  font-family: Calibri;
+  background-color: #d1dbe3;
+  font-size: 18px;
+  text-align: center;
+  
+  
+  
+
+  
+ animation-name: gradient
+}
+.indication-couleur {
+  background: linear-gradient(to bottom right, #d1dbe3, 90%, #4a4636);
+}
+
+
+header 
+{
+  position: absolute; 
+  top: 0; 
+  width: 100%; 
+  background-color: #d1dbe3;
+  color : black ;
+  font-family: Calibri;
+  text-align: center;
+  
+}
+
+hr.dot 
+{
+	 border: dotted 2px;
+	 width: 80%;
+}
+
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ff0000;
+}
+
+section 
+{
+	padding-top: 35px;	
+  padding-left: 20px;
+  padding-right: 15px;
+  font-family: Calibri;
+  color: black;
+}
+
+section#first 
+{
+  padding-top: 180px;
+  font-family: Calibri
+
+}
+
+
+
+aside#last 
+{
+  padding-top: 15px;	
+  padding-left: 10px;
+  padding-right: 105px;
+  padding-bottom: 90px;
+  color: black;
+}
+
+
+
+aside img
+{
+	border:0;
+	width:58px;
+	height:31px
+}
+		
+h1
+{ 
+  text-align: center;
+  font-family: Calibri;
+  text-decoration: underline;
+}
+h2
+{ 
+  text-align: center;
+  font-family: Calibri;
+  text-decoration: underline;
+}
+
+
+
+  table {
+        text-align: center;
+    }
+
+    th, td {
+        vertical-align: middle;
+    }
+
+
+
+
+
+
+footer 
+{
+  position:absolute;
+  
+  width: 100%;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  background-color: #d1dbe3;
+  color: black ;
+  text-align: center;
+  font-family: Calibri
+}
+
+footer ul li
+{
+  float: left;
+  width:33%;
+  list-style-type: none;
+}
+
+footer ul li:first-child
+{
+  text-align: left;
+}
+
+footer ul li:last-child
+{
+  float:right;
+  text-align: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media all and (orientation: portrait)
+{
+	
+	header 
+{
+  position: absolute; 
+  top: 0; 
+  width: 100%; 
+  background-color: #072a47;
+  color : #BEAB5B ;
+  font-family: Calibri;
+  text-align: center;
+  
+}
+	
+	nav ul 
+{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #072a47; 
+ 
+ 
+}
+
+nav ul li 
+{
+
+  border: thick double #BEAB5B;
+  
+}
+
+nav ul li a 
+{
+  display: inline-block;
+  color: #BEAB5B ;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  
+}
+nav ul li a:hover:not(.first)
+{
+  background-color: #DDDDDD;
+  color: black;
+}
+}
+
+@media screen and (min-width: 1024px) 
+/* Styles pour le menu */
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ff0000;
+}
+
+
+@media screen and (max-width: 640px) 
+{
+	nav ul li 
+	{
+		
+		width: 100%;
+		border-right: none;
+	}
+	#video{
+		max-width: 100%;
+	}
+
+	nav ul li a 
+	{
+		padding: 1px;
+	}
+
+	section#first 
+	{
+		padding-top: 400px;
+	}
+	section 
+	{
+		padding-top: 5px;
+		padding-right: 15px;
+	}
+	.image-responsive 
+	{
+		max-width: 100%;
+		height: auto;
+    }
+
+header 
+{
+  position: absolute; 
+}
+
+}
+
+p#index
+{ 
+  text-align: center;
+  font-family: Calibri;
+  width: 100%;
+}
