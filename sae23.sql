@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mar. 06 juin 2023 à 14:50
+-- Généré le : mar. 06 juin 2023 à 15:30
 -- Version du serveur : 8.0.33-0ubuntu0.22.04.2
 -- Version de PHP : 8.1.2-1ubuntu2.11
 
@@ -116,7 +116,13 @@ INSERT INTO `Mesures` (`id_mes`, `Date`, `Time`, `Valeur`, `id_cap`) VALUES
 (9, '2023-06-06', '14:41:44.000000', 0, 6),
 (10, '2023-06-06', '14:42:35.000000', 25.7, 1),
 (11, '2023-06-06', '14:42:35.000000', 53, 2),
-(12, '2023-06-06', '14:42:35.000000', 96, 3);
+(12, '2023-06-06', '14:42:35.000000', 96, 3),
+(13, '2023-06-06', '14:51:44.000000', 26, 4),
+(14, '2023-06-06', '14:51:44.000000', 53.5, 5),
+(15, '2023-06-06', '14:51:44.000000', 0, 6),
+(16, '2023-06-06', '14:52:35.000000', 25.8, 1),
+(17, '2023-06-06', '14:52:35.000000', 52.5, 2),
+(18, '2023-06-06', '14:52:35.000000', 56, 3);
 
 --
 -- Index pour les tables déchargées
@@ -156,7 +162,7 @@ ALTER TABLE `Capteurs`
 -- AUTO_INCREMENT pour la table `Mesures`
 --
 ALTER TABLE `Mesures`
-  MODIFY `id_mes` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_mes` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Contraintes pour les tables déchargées
