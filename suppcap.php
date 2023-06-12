@@ -37,7 +37,7 @@
 				include ("db.php");
 				$TYPE_CAP= $_POST['Type_Cap'];
 				$ID_BAT= $_POST['Id_Bat'];
-				$request = "DELETE FROM `Capteurs` WHERE (`id_bat`='$ID_BAT'/* PROBLEME */'type'='$TYPE_CAP')";
+				$request = "DELETE FROM `Capteurs` WHERE `id_bat`='$ID_BAT' AND `type`='$TYPE_CAP'";
 				$result = mysqli_query($id_bd, $request)
 					or die("Execution de la requete impossible : $request");	
 					

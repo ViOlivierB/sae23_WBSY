@@ -17,7 +17,7 @@
  	<body class="bg">
  			<header class="hd">
   
-      <h1>Gestion</h1>
+      <h1>GESTION</h1>
     
    <nav>
     <ul>
@@ -29,26 +29,31 @@
     </ul>
    </nav>
   </header>
-		<section id="first">
-			<p>
-				<br />
-				<em><strong>Gestionnaire du batiment  </strong></em>
-				<br />
-			</p>
-			<form action="php_gest.php" method="post" enctype="multipart/form-data"> 
-				<fieldset>
-					<legend>Authentifiez vous !</legend>
-					<label for="login_gest">Login : </label>
-					<input type="text" name="login_gest" id="login_gest" />
-					
-					<label for="mdp_gest">Mot de passe : </label>
-					<input type="password" name="mdp_gest" id="mdp_gest" />
-				</fieldset>
-				<p>
-					<input type="submit" value="Valider" />
-				</p>
-			</form>
-		</section>
+
+<section id="form">
+  <div class="wrapper">
+         <div class="title">
+            Connexion
+         </div>
+         <form action="php_gest.php" method="post" enctype="multipart/form-data">
+            <div class="field">
+               <input type="text" name="login_gest" id="login_gest" >
+               <label for="login_gest">Login : </label>
+            </div>
+            <div class="field">
+               <input type="password" name="mdp_gest" id="mdp_gest" >
+               <label for="mdp_gest">Mot de passe : </label>
+            </div>
+            <div class="content">
+            </div>
+            <div class="field">
+               <input type="submit" value="Valider">
+            </div>
+         </form>
+      </div>
+		 
+		</section> 
+
 <br />
 		<br />
 		<br />

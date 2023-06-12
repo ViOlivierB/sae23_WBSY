@@ -13,7 +13,7 @@
 
 <body class="bg">
   <header class="hd">
-    <h1>Consultation</h1>
+    <h1>CONSULTATION</h1>
     <nav>
       <ul>
         <li><a href="index.html" class="first">Accueil</a></li>

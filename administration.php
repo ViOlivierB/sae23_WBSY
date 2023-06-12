@@ -20,7 +20,7 @@ session_start();
 
   <header class="hd">
    
-      <h1>Administrateur </h1>
+      <h1>ADMINISTRATION </h1>
     
    <nav>
     <ul>
@@ -32,40 +32,32 @@ session_start();
     </ul>
    </nav>
   </header> 
+ <section id="form">
+  <div class="wrapper">
+         <div class="title">
+            Connexion
+         </div>
+         <form action="php_admin.php" method="post" enctype="multipart/form-data">
+            <div class="field">
+               <input type="text" name="login_admin" id="login_admin" >
+               <label for="login_admin">Login : </label>
+            </div>
+            <div class="field">
+               <input type="password" name="mdp_admin" id="mdp_admin" >
+               <label for="mdp_admin">Mot de passe : </label>
+            </div>
+            <div class="content">
+            </div>
+            <div class="field">
+               <input type="submit" value="Valider">
+            </div>
+         </form>
+      </div>
+		 
+		</section> 
+		 
  
- <section id="first">
-	
-	<h2>Connexion</h2>
-
-  
-			<p>
-				<br />
-				<em><strong>Authentification requise pour continuer</strong></em>
-				<br />
-			</p>
-			<form action="php_admin.php" method="post" enctype="multipart/form-data"> <!-- Form to fill in, in order to authenticate as the administrator -->
-				<fieldset>
-					<legend>Authentifiez vous</legend>
-					<label for="login_admin">Login : </label>
-					<input type="text" name="login_admin" id="login_admin" />
-					
-					<label for="mdp_admin">Mot de passe : </label>
-					<input type="password" name="mdp_admin" id="mdp_admin" />
-				</fieldset>
-				<p>
-					<input type="submit" value="Valider" />
-				</p>
-			</form>
-		
-
-  </section>
-
-
-
-
-  
-  
-   
+<br/>
 <br/>
 <br/>
 <br/>
