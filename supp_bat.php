@@ -40,21 +40,17 @@
 		<br />
 		<br />
 			<br />
-			<form action="suppbat.php" method="post" enctype="multipart/form-data"> <!-- Form to fill in, in order to delete a building, and its adminstrative. It also delete all the sensors in this building, with the values associated. -->
-				<fieldset>
-					<legend> Suppression d'un b&acirc;timent </legend>
-					
-				
+			<form action="suppbat.php" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <legend>Suppression d'un bâtiment</legend>
 
-					<label for="Nom"><strong> Nom du batiment &agrave; supprimer : </strong></label>
-					<input type="text" name="Nom_Bat" id ="Nom" />
-				</fieldset>
-				<div>
-					<input type="submit" value="Enregistrer" />
-				</div>
-				
-				
-			</form>
+        <label for="NomBat"><strong>Nom du bâtiment à supprimer :</strong></label>
+        <input type="text" name="Nom_Bat" id="NomBat" />
+    </fieldset>
+    <div>
+        <input type="submit" value="Enregistrer" />
+    </div>
+</form>
 		
 		</section>
 <br />

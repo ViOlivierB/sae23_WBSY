@@ -33,20 +33,38 @@
   </header>
 
 		<section>
-			<?php /* Deleting form data from the DATABASE, using an SQL query and including the login script */
-				include ("db.php");
-				$TYPE_CAP= $_POST['Type_Cap'];
-				$ID_BAT= $_POST['Id_Bat'];
-				$request = "DELETE FROM `Capteurs` WHERE `id_bat`='$ID_BAT' AND `type`='$TYPE_CAP'";
-				$result = mysqli_query($id_bd, $request)
-					or die("Execution de la requete impossible : $request");	
-					
-				mysqli_close($id_bd);
+			<?php
+include("db.php"); // Inclure le script de connexion à la base de données
 
-				echo "<p><strong> Le capteur $TYPE_CAP   du batiment &agrave; bien &eacute;t&eacute; supprim&eacute; . </strong></p>"
+$NOM_CAP = $_POST['Nom_Cap'];
+
+// Obtenir l'id_cap du capteur correspondant
+$requeteIdCapteur = "SELECT `id_cap` FROM `Capteurs` WHERE `nom` = '$NOM_CAP'";
+$resultatIdCapteur = mysqli_query($id_bd, $requeteIdCapteur)
+    or die("Execution de la requete impossible : $requeteIdCapteur");
+
+if (mysqli_num_rows($resultatIdCapteur) > 0) {
+    $ligne = mysqli_fetch_assoc($resultatIdCapteur);
+    $ID_CAP = $ligne['id_cap'];
+
+    // Supprimer les mesures associées au capteur spécifique
+    $requeteMesures = "DELETE FROM `Mesures` WHERE `id_cap` = '$ID_CAP'";
+    $resultatMesures = mysqli_query($id_bd, $requeteMesures)
+        or die("Execution de la requete impossible : $requeteMesures");
+
+    // Supprimer le capteur spécifique
+    $requeteCapteur = "DELETE FROM `Capteurs` WHERE `id_cap` = '$ID_CAP'";
+    $resultatCapteur = mysqli_query($id_bd, $requeteCapteur)
+        or die("Execution de la requete impossible : $requeteCapteur");
+
+    echo "<p><strong>Le capteur $NOM_CAP a bien été supprimé, ainsi que les mesures associées.</strong></p>";
+} else {
+    echo "<p><strong>Le capteur $NOM_CAP n'existe pas.</strong></p>";
+}
+
+mysqli_close($id_bd);
+?>
 			
-			?>
-			<hr />
 			<br />
 		<br />
 		<br />

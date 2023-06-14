@@ -21,7 +21,7 @@
 <body class="bg">
 <header class="hd">
    
-      <h1>Page d'administration</h1>
+      <h1>BATIMENTS & CAPTEURS</h1>
     
    <nav>
     <ul>

@@ -34,23 +34,22 @@
 <br />
 <br />
 <br />
-		<?php // Inserting form data into the DATABASE, using an SQL query and including the login script 
-			include ("db.php"); // Include the database connection script
-			$LOGIN= $_POST['Type_log'];// Retrieve the value of 'Type_log' from the form submission
-			$PASSWORD= $_POST['Type_passwd'];
-			$NOM_BAT= $_POST['Nom_bat'];
-			$GEST_BAT= $_POST['Type_gest'];
-			$requete = "INSERT INTO `Bâtiments` (`nom_bat`, `gestionnaire`, `login_gest`, `mdp_gest`) VALUES
-			('$NOM_BAT', '$GEST_BAT', '$LOGIN', '$PASSWORD')";
-			$resultat = mysqli_query($id_bd, $requete)
-			or die("Execution de la requete impossible : $requete");// Execute the SQL query and handle errors if any
-			mysqli_close($id_bd);
-			echo "<p> Vous venez de créer le bâtiment $NOM_BAT</p>"; 
-		?>
+		<?php
+	include("db.php"); // Include the database connection script
+	$LOGIN = $_POST['Type_log']; // Retrieve the value of 'Type_log' from the form submission
+	$PASSWORD = $_POST['Type_passwd'];
+	$NOM_BAT = $_POST['Nom_bat'];
+	$GEST_BAT = $_POST['Type_gest'];
+	$requete = "INSERT INTO `Bâtiments` (`nom_bat`, `gestionnaire`, `login_gest`, `mdp_gest`) VALUES ('$NOM_BAT', '$GEST_BAT', '$LOGIN', '$PASSWORD')";
+	$resultat = mysqli_query($id_bd, $requete) or die("Execution de la requete impossible : $requete"); // Execute the SQL query and handle errors if any
+	mysqli_close($id_bd);
+	echo "<p> Vous venez de créer le bâtiment $NOM_BAT</p>";
+?>
+
 		<section>
 		<br />
-		<hr />
-		<hr />
+		<br />
+		
 		<p>
 			<a class="button" href="index.html"><strong>Accueil</strong> 
 			</a>

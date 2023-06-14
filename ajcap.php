@@ -44,20 +44,22 @@
 		<br />
 		<br />	
 		<?php
-			include("db.php");
+	include("db.php");
 
-			$NOM_CAP = $_POST['Nom_Cap'];
-			$TYPE_CAP = $_POST['Type_Cap'];
-			$ID_BAT = $_POST['Id_Bat'];
+	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+		$NOM_CAP = $_POST['Nom_Cap'];
+		$TYPE_CAP = $_POST['Type_Cap'];
+		$ID_BAT = $_POST['Id_Bat'];
 
-			$request = "INSERT INTO `Capteurs` (`nom_cap`, `type`, `id_bat`) VALUES ('$NOM_CAP', '$TYPE_CAP', '$ID_BAT')";
-			$result = mysqli_query($id_bd, $request) or die("Execution de la requete impossible : $request");
+		$request = "INSERT INTO `Capteurs` (`nom`, `type`, `id_bat`) VALUES ('$NOM_CAP', '$TYPE_CAP', '$ID_BAT')";
+		$result = mysqli_query($id_bd, $request) or die("Execution de la requete impossible : $request");
 
-			mysqli_close($id_bd);
+		mysqli_close($id_bd);
 
-			echo "<p><strong> Le capteur $NOM_CAP, de type $TYPE_CAP, a été ajouté.</strong></p>";
-		?>
-			<hr />
+		echo "<p><strong>Le capteur $NOM_CAP, de type $TYPE_CAP, a été ajouté.</strong></p>";
+	}
+?>
+			
 		
 		<p>
 			<a class="button" href="index.html"><strong>Accueil</strong> 

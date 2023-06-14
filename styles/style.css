@@ -2,7 +2,7 @@
 body 
 {
   margin: 0;
-  font-family: Calibri;
+  font-family: Helvetica;
   background-color: #d1dbe3;
   font-size: 18px;
   text-align: center;
@@ -24,13 +24,19 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 }
 
 
+.p {
+text-align: center, justify;
+
+}
+
+
 header {
   position: relative;
   top: 0;
   width: 80%;
   background-color: #d1dbe3;
   color: white;
-  font-family: Calibri;
+  font-family: Helvetica;
   text-align: center;
   margin: 0 auto; /* Ajout de cette propriété */
 }
@@ -63,6 +69,14 @@ nav a {
   transition: color 0.3s ease;
 }
 
+/* Effets de couleur au survol */
+.hd ul li a:hover {
+  color: #fff;
+  background-color: #333;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  border-radius: 5px; /* Arrondir les coins */
+}
+
 
 
 nav a:hover {
@@ -74,14 +88,14 @@ section
 	padding-top: 35px;	
   padding-left: 20px;
   padding-right: 15px;
-  font-family: Calibri;
+  font-family: Helvetica;
   color: black;
 }
 
 section#first 
 {
   padding-top: 180px;
-  font-family: Calibri
+  font-family: Helvetica;
 
 }
 
@@ -108,13 +122,13 @@ aside img
 h1
 { 
   text-align: center;
-  font-family: Calibri;
+  font-family: Helvetica;
   text-decoration: underline;
 }
 h2
 { 
   text-align: center;
-  font-family: Calibri;
+  font-family: Helvetica;
   text-decoration: underline;
 }
 
@@ -143,7 +157,7 @@ footer {
   background-color: #d1dbe3;
   color: white;
   text-align: center;
-  font-family: Calibri;
+  font-family: Helvetica;
   margin: 0 auto;
 }
 
@@ -426,6 +440,150 @@ header
 }
 
 }
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+#form {
+  display: flex;
+  justify-content: center; /* Centrer horizontalement */
+  align-items: center; /* Centrer verticalement */
+  height: 100vh; /* Hauteur de la section */
+}
+
+.wrapper {
+  max-width: 400px; /* Largeur maximale du formulaire */
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+}
+
+/* Reste du style du formulaire... */
+
+
+::selection{
+  background: #2b3f4a;
+  color: #fff;
+}
+.wrapper{
+  width: 380px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+}
+.wrapper .title{
+  font-size: 35px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 100px;
+  color: #fff;
+  user-select: none;
+  border-radius: 15px 15px 0 0;
+  background: linear-gradient(-135deg, #2b3f4a, #2b3f4a);
+}
+.wrapper form{
+  padding: 10px 30px 50px 30px;
+}
+.wrapper form .field{
+  height: 50px;
+  width: 100%;
+  margin-top: 20px;
+  position: relative;
+}
+.wrapper form .field input{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  font-size: 17px;
+  padding-left: 20px;
+  border: 1px solid lightgrey;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+.wrapper form .field input:focus,
+form .field input:valid{
+  border-color: #2b3f4a;
+}
+.wrapper form .field label{
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  color: #999999;
+  font-weight: 400;
+  font-size: 17px;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+}
+form .field input:focus ~ label,
+form .field input:valid ~ label{
+  top: 0%;
+  font-size: 16px;
+  color: #2b3f4a;
+  background: #fff;
+  transform: translateY(-50%);
+}
+form .content{
+  display: flex;
+  width: 100%;
+  height: 50px;
+  font-size: 16px;
+  align-items: center;
+  justify-content: space-around;
+}
+form .content .checkbox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+form .content input{
+  width: 15px;
+  height: 15px;
+  background: red;
+}
+form .content label{
+  color: #2b3f4a;
+  user-select: none;
+  padding-left: 5px;
+}
+form .content .pass-link{
+  color: "";
+}
+form .field input[type="submit"]{
+  color: #fff;
+  border: none;
+  padding-left: 0;
+  margin-top: -10px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  background: linear-gradient(-135deg, #2b3f4a, #2b3f4a);
+  transition: all 0.3s ease;
+}
+form .field input[type="submit"]:active{
+  transform: scale(0.95);
+}
+form .signup-link{
+  color: #2b3f4a;
+  margin-top: 20px;
+  text-align: center;
+}
+form .pass-link a,
+form .signup-link a{
+  color: #2b3f4a;
+  text-decoration: none;
+}
+form .pass-link a:hover,
+form .signup-link a:hover{
+  text-decoration: underline;
+}
+
+
+
+
+
+
 
 
 

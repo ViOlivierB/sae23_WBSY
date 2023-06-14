@@ -22,7 +22,7 @@ session_start();
 <body class="bg">
   <header class="hd">
     
-	<h1>Erreur de connexion</h1>
+	<h1>ERREUR DE CONNEXION</h1>
    
    <nav>
     <ul>
@@ -53,19 +53,14 @@ unset($_SESSION);
 		<br />
 		<br />
 		<br />		
-	<h2> Acc&egrave;s limit&eacute; aux personnes autoris&eacute;es !!</h2>
 		<br />
 		<br />
+		<h2> Acc&egrave;s limit&eacute; aux personnes autoris&eacute;es !!</h2>
 		<br />
 		<br />
+		<h3> Identifiant ou mot de passe NON saisi ou erroné ! </h3>
 		<br />
-		<p>
-			<em><h3> Identifiant ou mot de passe non saisi ou erron&eacute; !!! </h3></em>
-		</p>
-
 		<br />
-
-		
 
 		<p>
 			<a class="button" href="index.html"><strong>Accueil</strong> 

@@ -5,6 +5,52 @@ if ($_SESSION["auth"] != TRUE)
     header("Location:login_error.php");
 ?>
 
+<?php
+	include("db.php");
+
+	$dataPointsTemperature = array();
+	$dataPointsHumidity = array();
+	$dataPointsCO2 = array();
+
+	// Récupérer les mesures de température pour la salle B109 du bâtiment B depuis la base de données
+	$requestTemperature = "SELECT `id_mes`, `Valeur` FROM `Mesures` WHERE `id_cap` = 4 ORDER BY `Date` DESC LIMIT 5";
+	$resultTemperature = mysqli_query($id_bd, $requestTemperature) or die("Execution de la requete impossible : $requestTemperature");
+
+	// Parcourir les résultats et construire les points de données pour la température
+	while ($row = mysqli_fetch_assoc($resultTemperature)) {
+		$idMesure = $row['id_mes'];
+		$valeur = $row['Valeur'];
+
+		array_push($dataPointsTemperature, array("x" => $idMesure, "y" => $valeur));
+	}
+
+	// Récupérer les mesures d'humidité pour la salle B109 du bâtiment B depuis la base de données
+	$requestHumidity = "SELECT `id_mes`, `Valeur` FROM `Mesures` WHERE `id_cap` = 5 ORDER BY `Date` DESC LIMIT 5";
+	$resultHumidity = mysqli_query($id_bd, $requestHumidity) or die("Execution de la requete impossible : $requestHumidity");
+
+	// Parcourir les résultats et construire les points de données pour l'humidité
+	while ($row = mysqli_fetch_assoc($resultHumidity)) {
+		$idMesure = $row['id_mes'];
+		$valeur = $row['Valeur'];
+
+		array_push($dataPointsHumidity, array("x" => $idMesure, "y" => $valeur));
+	}
+
+	// Récupérer les mesures de CO2 pour la salle B109 du bâtiment B depuis la base de données
+	$requestCO2 = "SELECT `id_mes`, `Valeur` FROM `Mesures` WHERE `id_cap` = 6 ORDER BY `Date` DESC LIMIT 5";
+	$resultCO2 = mysqli_query($id_bd, $requestCO2) or die("Execution de la requete impossible : $requestCO2");
+
+	// Parcourir les résultats et construire les points de données pour le CO2
+	while ($row = mysqli_fetch_assoc($resultCO2)) {
+		$idMesure = $row['id_mes'];
+		$valeur = $row['Valeur'];
+
+		array_push($dataPointsCO2, array("x" => $idMesure, "y" => $valeur));
+	}
+
+	mysqli_close($id_bd);
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -16,6 +62,52 @@ if ($_SESSION["auth"] != TRUE)
     <meta name="description" content="SAE 23" />
     <meta name="keywords" content="HTML, CSS, PHP" />
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
+	<script>
+window.onload = function () {
+	var chartTemperature = new CanvasJS.Chart("chartContainerTemperature", {
+		theme: "light2",
+		animationEnabled: true,
+		zoomEnabled: true,
+		title: {
+			text: "Température"
+		},
+		data: [{
+			type: "area",
+			dataPoints: <?php echo json_encode($dataPointsTemperature, JSON_NUMERIC_CHECK); ?>
+		}]
+	});
+	chartTemperature.render();
+
+	var chartHumidity = new CanvasJS.Chart("chartContainerHumidity", {
+		theme: "light2",
+		animationEnabled: true,
+		zoomEnabled: true,
+		title: {
+			text: "Humidité"
+		},
+		data: [{
+			type: "area",
+			dataPoints: <?php echo json_encode($dataPointsHumidity, JSON_NUMERIC_CHECK); ?>
+		}]
+	});
+	chartHumidity.render();
+
+	var chartCO2 = new CanvasJS.Chart("chartContainerCO2", {
+		theme: "light2",
+		animationEnabled: true,
+		zoomEnabled: true,
+		title: {
+			text: "CO2"
+		},
+		data: [{
+			type: "area",
+			dataPoints: <?php echo json_encode($dataPointsCO2, JSON_NUMERIC_CHECK); ?>
+		}]
+	});
+	chartCO2.render();
+}
+</script>
+	
 </head>
 
 <body class="bg">
@@ -34,16 +126,6 @@ if ($_SESSION["auth"] != TRUE)
         </nav>
     </header>
 
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
     <br />
     <br />
 
@@ -81,10 +163,10 @@ if ($_SESSION["auth"] != TRUE)
 
     include("db.php");
 
-    $request = "SELECT * FROM `Mesures` WHERE id_cap = '4' ORDER BY Date DESC LIMIT 5";
-    $result = mysqli_query($id_bd, $request) or die("Execution de la requete impossible : $request");
+    $requestTemperature = "SELECT * FROM `Mesures` WHERE id_cap = '4' ORDER BY Date DESC LIMIT 5";
+    $resultTemperature = mysqli_query($id_bd, $requestTemperature) or die("Execution de la requete impossible : $requestTemperature");
 
-    echo '<h3> Affichage des mesures des capteurs de la salle B109 du bâtiment B </h3>';
+    echo '<h3> Affichage des mesures de température de la salle B109 du bâtiment B </h3>';
     echo '<br />';
     echo '<br />';
 
@@ -93,7 +175,7 @@ if ($_SESSION["auth"] != TRUE)
     echo "<th> Date et Heure </th>";
     echo "<th> Valeurs (°C)</th>";
 
-    while ($ligne = mysqli_fetch_assoc($result)) {
+    while ($ligne = mysqli_fetch_assoc($resultTemperature)) {
         extract($ligne);
         echo '<tr>';
         echo "<td> Température </td>";
@@ -107,14 +189,14 @@ if ($_SESSION["auth"] != TRUE)
     echo '<br />';
     echo '<br />';
 
-    $request = "SELECT * FROM `Mesures` WHERE id_cap = '5' ORDER BY Date DESC LIMIT 5";
-    $result = mysqli_query($id_bd, $request) or die("Execution de la requete impossible : $request");
+    $requestHumidity = "SELECT * FROM `Mesures` WHERE id_cap = '5' ORDER BY Date DESC LIMIT 5";
+    $resultHumidity = mysqli_query($id_bd, $requestHumidity) or die("Execution de la requete impossible : $requestHumidity");
     echo '<table>';
     echo "<th> Capteur</th>";
     echo "<th> Date et Heure </th>";
     echo "<th> Valeurs (%) </th>";
 
-    while ($line = mysqli_fetch_assoc($result)) {
+    while ($line = mysqli_fetch_assoc($resultHumidity)) {
         extract($line);
         echo '<tr>';
         echo "<td> Humidité </td>";
@@ -128,14 +210,14 @@ if ($_SESSION["auth"] != TRUE)
     echo '<br />';
     echo '<br />';
 
-    $request = "SELECT * FROM `Mesures` WHERE id_cap = '6' ORDER BY Date DESC LIMIT 5";
-    $result = mysqli_query($id_bd, $request) or die("Execution de la requete impossible : $request");
+    $requestCO2 = "SELECT * FROM `Mesures` WHERE id_cap = '6' ORDER BY Date DESC LIMIT 5";
+    $resultCO2 = mysqli_query($id_bd, $requestCO2) or die("Execution de la requete impossible : $requestCO2");
     echo '<table>';
     echo "<th> Capteur </th>";
     echo "<th> Date et Heure </th>";
     echo "<th> Valeurs (%)</th>";
 
-    while ($ligne = mysqli_fetch_assoc($result)) {
+    while ($ligne = mysqli_fetch_assoc($resultCO2)) {
         extract($ligne);
         echo '<tr>';
         echo "<td> cO2 </td>";
@@ -148,13 +230,25 @@ if ($_SESSION["auth"] != TRUE)
     mysqli_close($id_bd);
     ?>
 
-
-
-    <br />
-    <br />
-    <br />
+<br />
     <br />
 
+    <div id="chartContainerTemperature" style="height: 370px; width: 100%;"></div>
+	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+	<br />
+    <br />
+
+	<div id="chartContainerHumidity" style="height: 370px; width: 100%;"></div>
+	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+	<br />
+    <br />
+
+	<div id="chartContainerCO2" style="height: 370px; width: 100%;"></div>
+	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+	<br />
     <br />
 
     <footer class="hd">
@@ -168,5 +262,3 @@ if ($_SESSION["auth"] != TRUE)
 </body>
 
 </html>
-
-

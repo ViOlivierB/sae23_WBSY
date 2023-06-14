@@ -40,23 +40,23 @@
 		<br />
 		<br />
 		<br />
-			<form action="ajcap.php" method="post" enctype="multipart/form-data"> <!-- Form to fill in, in order to create a new sensor, adding it to a room and a buiding -->
-				<fieldset>
-					<legend> Ajout d'un capteur </legend>
-					
-					<label for="Nom"><strong>  Nom du capteur &agrave;  ajouter : </strong></label>
-					<input type="text" name="Nom_Cap" id ="Nom" />
-					<br />
-					<label for="Type"><strong>  Type du capteur &agrave;  ajouter : </strong></label>
-					<input type="text" name="Type_Cap" id ="Type" />
-					<br />
-					<label for="Bat"><strong>  ID du Bâtiment du capteur &agrave; ajouter : </strong></label>
-					<input type="text" name="Id_Bat" id ="Bat" />
-				</fieldset>
-				<div class="valid">
-					<input type="submit" value="Enregistrer" />
-				</div>
-			</form>
+			<form action="ajcap.php" method="post" enctype="multipart/form-data">
+	<fieldset>
+		<legend>Ajout d'un capteur</legend>
+		
+		<label for="Nom"><strong>Nom du capteur à ajouter :</strong></label>
+		<input type="text" name="Nom_Cap" id="Nom" required />
+		<br />
+		<label for="Type"><strong>Type du capteur à ajouter :</strong></label>
+		<input type="text" name="Type_Cap" id="Type" required />
+		<br />
+		<label for="Bat"><strong>ID du Bâtiment du capteur à ajouter :</strong></label>
+		<input type="text" name="Id_Bat" id="Bat" required />
+	</fieldset>
+	<div class="valid">
+		<input type="submit" value="Enregistrer" />
+	</div>
+</form>
 		</section>
 
   		 <br />

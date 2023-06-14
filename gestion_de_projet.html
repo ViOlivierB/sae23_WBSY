@@ -126,8 +126,7 @@
 	pas à la structure de la table "Mesures" destinée à recevoir les données. De ce fait, l'interaction entre mon script en Bash et la base de donnée était impossible.
 	J'ai pu trouver la solution en analysant plus en détail les différents champs de chaque table qui constituent la base de donnée. Dans l'ensemble,
 	je suis satisfait de ce que j'ai accompli par rapport au cahier des charges. En effet, j'ai réussi à coder un script récupérant les données sur un bus MQTT
-	en Bash et à les envoyer vers la base de donnée nommée "sae23". Malgré quelques difficultés techniques rencontrées tout au long du processus,
-	j'ai pu trouver des solutions appropriées pour les résoudre. 
+	en Bash et à les envoyer vers la base de donnée nommée "sae23".
   
 	</p>
 	
@@ -142,11 +141,7 @@ J'ai ensuite exporter ce que j'ai créé en un fichier SQL que j'ai ensuite part
 Par la suite, je me suis occupé de créer un dépôt github pour notre projet, j'ai rencontré quelques problèmes, j'ai en effet créé plusieurs branches après avoir créer ce dépôt et je n'étais donc pas synchronisé avec la branche principale utilisée par mes camarades.
  J'ai donc téléchargé le contenu du dépôt github puis récupéré les différentes branches avant de me situer sur la branche principale et d'y ajouter mon fichier SQL.
 Après avoir fait tout ça j'ai fini par rejoindre mes camarades dans la réalisation de scripts, dans un premier temps j'ai aidé à la réalisation du script de récupération des données et de l'envoi sur la table. Nous avons eu des problèmes lors de l'envoi de nos données sur la base avec l'aide de la commande mysql.
- Nous avons eu des problèmes d'arguments dans notre commande car nous utilisions trop de guillemets et de "simple quote", pour résoudre ce problème je suis passé par des variables intermédiaires pour alléger la commande finale. J'ai ensuite essayé de mettre en place une crontab pour exécuter ce script automatiquement, 
- cependant nous avons toujours à l'heure actuelle des problèmes pour lancer ce script au démarrage de la machine, problème que nous n'avons pas si nous lançons le script régulièrement de manière plus classique.
 
-Pour finir je me suis dirigé vers mon autre camarade pour l'aider à comprendre certaines requêtes PHP nécessaire à la réalisation de nos scripts, je n'ai pas apporté beaucoup d'aide car une grande partie du travail était déjà faite,
- mais j'ai pu tout de même me montrer utiles pour certaines parties du code demandant notamment l'accès à la base de donnée pour récupérer les identifiants et mots de passe des gestionnaires.
   
 	</p>
 	
@@ -166,9 +161,6 @@ Pour la gestion de la base de données, j'ai utilisé InfluxDB, une base de donn
 J'ai donc pu stocker les données reçues via MQTT dans InfluxDB, en vue d'une analyse et d'une visualisation ultérieures. Enfin, j'ai utilisé Grafana pour la visualisation et la mise en forme des données métriques.<br/>
 Grafana est une interface graphique conviviale qui m'a permis de créer des tableaux de bord personnalisés pour afficher les données stockées dans InfluxDB. Cela m'a offert une excellente manière de présenter les informations de manière claire et intuitive.
 
-Globalement, je n'ai pas rencontré de difficultés majeures dans la mise en place de cette solution. Grâce à l'utilisation de Docker et à la bonne configuration de chaque composant, j'ai réussi à créer une chaîne de traitement fluide pour la visualisation des données MQTT.
- Je suis satisfait d'avoir surmonté les problèmes liés au "msg payload" en suivant les conseils de mon professeur référent, ce qui m'a permis de réaliser un projet conforme aux attentes du cahier des charges.
-  
 	</p>
 	
 	<p>	<strong>Sami</strong>
@@ -180,6 +172,47 @@ Globalement, je n'ai pas rencontré de difficultés majeures dans la mise en pla
  J’ai donc créé une page d’administration ou il était nécessaire de se connecter pour être redirigé vers la page ou nous pouvions supprimer ou ajouter des capteurs et bâtiments. Si le mot de passe ou identifiant était incorrect où inexistant nous étions redirigés vers une page nous l’indiquant (nommé login_error).<br/>
 -De gérer des bâtiments. Pour ce faire j’ai utilisé le même procédé que l’administration en présentant les données sous formes de tableaux et il était impératif d’adapter les requêtes PHP qui allaient chercher les données dans la base.
 Pour la base de données, un fichier PHP servait à s’y connecter ou y était indiqué le login, l’identifiant le nem de la base de données afin d’y accéder, il à été utilisé lui aussi dans la plupart des autres fichiers.<br/>
+
+
+  
+	</p>
+	</div>
+  </section>
+  
+  
+  <section>
+	<h2> Problèmes rencontrés & solutions proposées</h2>
+	<div class="paragraph-container">
+	<p>	<strong>Yannis</strong><br/>
+		<br/>
+	Malgré quelques difficultés techniques rencontrées tout au long du processus,
+	j'ai pu trouver des solutions appropriées pour les résoudre. 
+  
+	</p>
+	
+	<p>	<strong>Baptiste</strong><br/>
+		<br/>
+ Nous avons eu des problèmes d'arguments dans notre commande car nous utilisions trop de guillemets et de "simple quote", pour résoudre ce problème je suis passé par des variables intermédiaires pour alléger la commande finale. J'ai ensuite essayé de mettre en place une crontab pour exécuter ce script automatiquement, 
+ cependant nous avons toujours à l'heure actuelle des problèmes pour lancer ce script au démarrage de la machine, problème que nous n'avons pas si nous lançons le script régulièrement de manière plus classique.
+
+Pour finir je me suis dirigé vers mon autre camarade pour l'aider à comprendre certaines requêtes PHP nécessaire à la réalisation de nos scripts, je n'ai pas apporté beaucoup d'aide car une grande partie du travail était déjà faite,
+ mais j'ai pu tout de même me montrer utiles pour certaines parties du code demandant notamment l'accès à la base de donnée pour récupérer les identifiants et mots de passe des gestionnaires.
+  
+	</p>
+	
+	<p>	<strong>Wassim</strong>
+	<br/>
+		<br/>
+
+Globalement, je n'ai pas rencontré de difficultés majeures dans la mise en place de cette solution. Grâce à l'utilisation de Docker et à la bonne configuration de chaque composant, j'ai réussi à créer une chaîne de traitement fluide pour la visualisation des données MQTT.
+ Je suis satisfait d'avoir surmonté les problèmes liés au "msg payload" en suivant les conseils de mon professeur référent, ce qui m'a permis de réaliser un projet conforme aux attentes du cahier des charges.
+  
+	</p>
+	
+	<p>	<strong>Sami</strong>
+	<br/>
+	<br/>
+Pour la base de données, un fichier PHP servait à s’y connecter ou y était indiqué le login, l’identifiant le nem de la base de données afin d’y accéder, il à été utilisé lui aussi dans la plupart des autres fichiers.<br/>
 Pour ce qui est des problèmes rencontrés, la suppression de capteurs n’a pas marché malgré de nombreuses tentatives et j’ai donc fais appel à mes camarades qui ont résolu le problème qui se tramais au niveau de l’adaptation des requêtes PHP qui elles-mêmes sont faites via du SQL qui va chercher les données dans la base.
 Je tiens à préciser que la cohésion d’un groupe et l’esprit d’équipe est un atout majeur pour réussir et c’est ce qui a mené a bien notre projet.
 
@@ -189,38 +222,27 @@ Je tiens à préciser que la cohésion d’un groupe et l’esprit d’équipe e
   </section>
   
   
-  <section>
-	<h2> Problèmes rencontrés</h2>
-	<div class="paragraph-container">
-	<p>
-	Voici la maniere dont nous avons procédé pour la base de donnée. <br/>
-	<br/>   
-	
-	</p>
-	</div>
-  </section>
   
   
-  
-  <section>
-	<h2>Solutions proposées</h2>
-	<div class="paragraph-container">
-	<p>
-	Voici la maniere dont nous avons procédé pour la base de donnée. <br/>
-	<br/>   
-	
-	</p>
-	</div>
-  </section>
   
   
   <section>
 	<h2>Degré de satisfaction du cahier des charges</h2>
 	<div class="paragraph-container">
 	<p>
-	Honnetement <br/>
-	<br/>   
+	Le cahier des charges répond aux contraintes techniques spécifiées. Voici comment les différentes contraintes sont prises en compte :<br/><br/>
 
+1. Environnement et système d'exploitation : Le site est développé dans une machine virtuelle utilisant le système d'exploitation GNU/Linux (Lubuntu). Cela garantit la compatibilité et la stabilité du site dans cet environnement spécifique.<br/>
+
+2. Langages autorisés : Les langages autorisés pour le développement du site sont HTML5, CSS3, PHP, Javascript, Bash, C et Python. Ces langages offrent une large gamme de possibilités pour la création de pages web dynamiques, la manipulation de bases de données, la gestion des sessions utilisateur, etc.<br/>
+
+3. Documentation et commentaires : Le code développé est bien documenté, avec des commentaires pertinents rédigés en anglais. Cela facilite la compréhension et la maintenance du code par d'autres développeurs à l'avenir.<br/>
+
+4. Publication sur un serveur web dédié : Le site est publié sur un serveur web dédié utilisant la stack LAMPP (Linux, Apache, MySQL, PHP, PhpMyAdmin). Cette configuration permet de mettre en ligne le site de manière sécurisée et d'assurer son accessibilité aux utilisateurs.<br/>
+
+5. Gestion de version avec Git et GitHub : Le développement du site est géré à l'aide du système de gestion de version Git, avec le dépôt hébergé sur la plateforme GitHub. Cela permet de suivre les modifications du code, de collaborer efficacement entre les membres de l'équipe et de revenir à des versions antérieures si nécessaire.<br/>
+
+En respectant ces contraintes techniques, le développement du site se fait de manière cohérente et conforme aux exigences du cahier des charges.
 	</p>
 	</div>
   </section>

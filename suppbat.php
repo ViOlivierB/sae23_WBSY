@@ -33,27 +33,46 @@
   </header>
 
    		<section>
-			<?php /* Deleting form data from the DATABASE, usng an SQL query and including the login script */
-				include ("db.php");
-				$NOM_BAT = $_POST['Nom_Bat'];
-				$requete = "SELECT * FROM `Bâtiments` WHERE (`nom_bat`='$NOM_BAT')";
-				$resultat = mysqli_query($id_bd, $requete)
-					or die("Execution de la requete impossible : $requete");
-					
-				while($ligne=mysqli_fetch_assoc($resultat))
-				 {
-					extract($ligne);
-					$NOM_BAT= "$NOM_BAT";
-					} 
+<?php
+include("db.php"); // Inclure le script de connexion à la base de données
 
-				$requete = "DELETE FROM `Bâtiments` WHERE (`nom_bat`='$NOM_BAT')";
-				$resultat = mysqli_query($id_bd, $requete)
-					or die("Execution de la requete impossible : $requete");
-				mysqli_close($id_bd);
+$NOM_BAT = $_POST['Nom_Bat']; // Récupérer le nom du bâtiment du formulaire
 
-				echo "<p> Le batiment $NOM_BAT a été supprimé <p>"
-				?>
-			<hr>
+// Obtenir l'id_bat du bâtiment correspondant
+$requeteIdBatiment = "SELECT `id_bat` FROM `Bâtiments` WHERE `nom_bat` = '$NOM_BAT'";
+$resultatIdBatiment = mysqli_query($id_bd, $requeteIdBatiment)
+    or die("Execution de la requete impossible : $requeteIdBatiment");
+
+if (mysqli_num_rows($resultatIdBatiment) > 0) {
+    $ligne = mysqli_fetch_assoc($resultatIdBatiment);
+    $ID_BAT = $ligne['id_bat'];
+
+    // Supprimer les mesures associées aux capteurs du bâtiment
+    $requeteMesures = "DELETE FROM `Mesures` WHERE `id_cap` IN (SELECT `id_cap` FROM `Capteurs` WHERE `id_bat` = $ID_BAT)";
+    $resultatMesures = mysqli_query($id_bd, $requeteMesures)
+        or die("Execution de la requete impossible : $requeteMesures");
+
+    // Supprimer les capteurs associés au bâtiment
+    $requeteCapteurs = "DELETE FROM `Capteurs` WHERE `id_bat` = $ID_BAT";
+    $resultatCapteurs = mysqli_query($id_bd, $requeteCapteurs)
+        or die("Execution de la requete impossible : $requeteCapteurs");
+
+    // Supprimer le bâtiment lui-même
+    $requeteBatiment = "DELETE FROM `Bâtiments` WHERE `id_bat` = $ID_BAT";
+    $resultatBatiment = mysqli_query($id_bd, $requeteBatiment)
+        or die("Execution de la requete impossible : $requeteBatiment");
+
+    echo "<p>Le bâtiment $NOM_BAT a été supprimé, ainsi que tous les capteurs et les mesures associées.</p>";
+} else {
+    echo "<p>Le bâtiment $NOM_BAT n'existe pas.</p>";
+}
+
+mysqli_close($id_bd);
+?>
+
+
+
+			
 			
 		<br />
 		<br />

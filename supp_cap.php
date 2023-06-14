@@ -39,20 +39,16 @@
 			<br />
 			<br />
 			<br />
-			<form action="suppcap.php" method="post" enctype="multipart/form-data"> <!-- Form to fill in, in order to delete a sensor, and all the values associated -->
-				<fieldset>
-					<legend> Suppression d'un capteur </legend>
-			
-					<label for="Type"><strong>  Type du capteur &agrave;  supprimer : </strong></label>
-					<input type="text" name="Type_Cap" id ="Type" />
-					<br />
-					<label for="Bat"><strong>  ID du Bâtiment du capteur &agrave; supprimer : </strong></label>
-					<input type="text" name="Id_Bat" id ="Bat" />
-				</fieldset>
-				<div class="valid">
-					<input type="submit" value="Enregistrer" />
-				</div>
-			</form>
+			<form action="suppcap.php" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <legend>Suppression d'un capteur</legend>
+        <label for="NomCap"><strong>Nom du capteur à supprimer :</strong></label>
+        <input type="text" name="Nom_Cap" id="NomCap" />
+    </fieldset>
+    <div class="valid">
+        <input type="submit" value="Enregistrer" />
+    </div>
+</form>
 		</section>
 <br />
 		<br />

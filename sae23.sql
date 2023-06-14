@@ -1,24 +1,23 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1deb5ubuntu1
--- https://www.phpmyadmin.net/
+-- version 4.2.7.1
+-- http://www.phpmyadmin.net
 --
--- Hôte : localhost:3306
--- Généré le : mar. 06 juin 2023 à 15:30
--- Version du serveur : 8.0.33-0ubuntu0.22.04.2
--- Version de PHP : 8.1.2-1ubuntu2.11
+-- Client :  localhost
+-- Généré le :  Mer 14 Juin 2023 à 16:46
+-- Version du serveur :  5.6.20
+-- Version de PHP :  5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Base de données : `sae23`
+-- Base de données :  `sae23`
 --
 
 -- --------------------------------------------------------
@@ -27,13 +26,13 @@ SET time_zone = "+00:00";
 -- Structure de la table `Administration`
 --
 
-CREATE TABLE `Administration` (
+CREATE TABLE IF NOT EXISTS `Administration` (
   `login_admin` varchar(30) NOT NULL,
   `mdp_admin` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `Administration`
+-- Contenu de la table `Administration`
 --
 
 INSERT INTO `Administration` (`login_admin`, `mdp_admin`) VALUES
@@ -45,21 +44,21 @@ INSERT INTO `Administration` (`login_admin`, `mdp_admin`) VALUES
 -- Structure de la table `Bâtiments`
 --
 
-CREATE TABLE `Bâtiments` (
-  `id_bat` varchar(1) NOT NULL,
+CREATE TABLE IF NOT EXISTS `Bâtiments` (
+`id_bat` int(1) NOT NULL,
   `nom_bat` varchar(30) NOT NULL,
   `gestionnaire` varchar(30) NOT NULL,
   `login_gest` varchar(30) NOT NULL,
   `mdp_gest` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
--- Déchargement des données de la table `Bâtiments`
+-- Contenu de la table `Bâtiments`
 --
 
 INSERT INTO `Bâtiments` (`id_bat`, `nom_bat`, `gestionnaire`, `login_gest`, `mdp_gest`) VALUES
-('1', 'E', 'mansaladier', 'mansal', 'saladier'),
-('2', 'B', 'soutounir', 'soutou', 'tounir');
+(1, 'E', 'mansaladier', 'mansal', 'saladier'),
+(2, 'B', 'soutounir', 'soutou', 'tounir');
 
 -- --------------------------------------------------------
 
@@ -67,24 +66,24 @@ INSERT INTO `Bâtiments` (`id_bat`, `nom_bat`, `gestionnaire`, `login_gest`, `md
 -- Structure de la table `Capteurs`
 --
 
-CREATE TABLE `Capteurs` (
-  `id_cap` int NOT NULL,
-  `type` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `id_bat` varchar(1) NOT NULL,
-  `nom` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+CREATE TABLE IF NOT EXISTS `Capteurs` (
+`id_cap` int(30) NOT NULL,
+  `type` varchar(30) NOT NULL,
+  `id_bat` int(1) NOT NULL,
+  `nom` varchar(30) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
--- Déchargement des données de la table `Capteurs`
+-- Contenu de la table `Capteurs`
 --
 
 INSERT INTO `Capteurs` (`id_cap`, `type`, `id_bat`, `nom`) VALUES
-(1, 'température', '1', 'AM107-35'),
-(2, 'humidité', '1', 'AM107-35'),
-(3, 'co2', '1', 'AM107-35'),
-(4, 'température', '2', 'AM107-16'),
-(5, 'humidité', '2', 'AM107-16'),
-(6, 'co2', '2', 'AM107-16');
+(1, 'température', 1, 'AM107-35'),
+(2, 'humidité', 1, 'AM107-35'),
+(3, 'co2', 1, 'AM107-35'),
+(4, 'température', 2, 'AM107-16'),
+(5, 'humidité', 2, 'AM107-16'),
+(6, 'co2', 2, 'AM107-16');
 
 -- --------------------------------------------------------
 
@@ -92,16 +91,16 @@ INSERT INTO `Capteurs` (`id_cap`, `type`, `id_bat`, `nom`) VALUES
 -- Structure de la table `Mesures`
 --
 
-CREATE TABLE `Mesures` (
-  `id_mes` int NOT NULL,
+CREATE TABLE IF NOT EXISTS `Mesures` (
+`id_mes` int(30) NOT NULL,
   `Date` date NOT NULL,
   `Time` time(6) NOT NULL,
-  `Valeur` double NOT NULL,
-  `id_cap` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `Valeur` float NOT NULL,
+  `id_cap` int(30) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
 --
--- Déchargement des données de la table `Mesures`
+-- Contenu de la table `Mesures`
 --
 
 INSERT INTO `Mesures` (`id_mes`, `Date`, `Time`, `Valeur`, `id_cap`) VALUES
@@ -125,61 +124,61 @@ INSERT INTO `Mesures` (`id_mes`, `Date`, `Time`, `Valeur`, `id_cap`) VALUES
 (18, '2023-06-06', '14:52:35.000000', 56, 3);
 
 --
--- Index pour les tables déchargées
+-- Index pour les tables exportées
 --
 
 --
 -- Index pour la table `Bâtiments`
 --
 ALTER TABLE `Bâtiments`
-  ADD PRIMARY KEY (`id_bat`);
+ ADD PRIMARY KEY (`id_bat`);
 
 --
 -- Index pour la table `Capteurs`
 --
 ALTER TABLE `Capteurs`
-  ADD PRIMARY KEY (`id_cap`),
-  ADD KEY `id_bat` (`id_bat`);
+ ADD PRIMARY KEY (`id_cap`), ADD KEY `id_bat` (`id_bat`);
 
 --
 -- Index pour la table `Mesures`
 --
 ALTER TABLE `Mesures`
-  ADD PRIMARY KEY (`id_mes`),
-  ADD KEY `id_cap` (`id_cap`);
+ ADD PRIMARY KEY (`id_mes`), ADD KEY `id_cap` (`id_cap`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT pour les tables exportées
 --
 
+--
+-- AUTO_INCREMENT pour la table `Bâtiments`
+--
+ALTER TABLE `Bâtiments`
+MODIFY `id_bat` int(1) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT pour la table `Capteurs`
 --
 ALTER TABLE `Capteurs`
-  MODIFY `id_cap` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
+MODIFY `id_cap` int(30) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT pour la table `Mesures`
 --
 ALTER TABLE `Mesures`
-  MODIFY `id_mes` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
+MODIFY `id_mes` int(30) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
--- Contraintes pour les tables déchargées
+-- Contraintes pour les tables exportées
 --
 
 --
 -- Contraintes pour la table `Capteurs`
 --
 ALTER TABLE `Capteurs`
-  ADD CONSTRAINT `Capteurs_ibfk_4` FOREIGN KEY (`id_bat`) REFERENCES `Bâtiments` (`id_bat`);
+ADD CONSTRAINT `sae231` FOREIGN KEY (`id_bat`) REFERENCES `Bâtiments` (`id_bat`);
 
 --
 -- Contraintes pour la table `Mesures`
 --
 ALTER TABLE `Mesures`
-  ADD CONSTRAINT `Mesures_ibfk_1` FOREIGN KEY (`id_cap`) REFERENCES `Capteurs` (`id_cap`);
-COMMIT;
+ADD CONSTRAINT `sae232` FOREIGN KEY (`id_cap`) REFERENCES `Capteurs` (`id_cap`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
